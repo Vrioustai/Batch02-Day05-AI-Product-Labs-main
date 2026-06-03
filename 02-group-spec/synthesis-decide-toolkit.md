@@ -1,85 +1,54 @@
-# Toolkit — Từ Evidence Đến Build Slice
+# Định Hướng Chiến Lược Dự Án: TrustBite AI (GrabShield) - Giai Đoạn Phát Triển
 
-Dùng sau khi nhóm đã có evidence. Mục tiêu là chốt một build slice đủ nhỏ cho Day 06.
+## 1. Phân Cụm Bằng Chứng (Evidence Clustering)
+*Thay vì liệt kê tính năng, bằng chứng được gom nhóm trực tiếp dựa trên nỗi đau (pain) và hành vi thực tế của người dùng:*
 
-## 1. Gom evidence thành cụm
+* **"Treo đầu dê bán thịt chó":** Người dùng đặt trọn niềm tin vào điểm số 4.9 - 5 sao của quán nhưng thực tế nhận lại đồ ăn ôi thiu, kém chất lượng.
+* **"Review rác tràn lan":** Xuất hiện hàng loạt các bình luận có nội dung, cú pháp giống hệt nhau, không mang lại bất kỳ giá trị tham khảo nào cho người mua sau.
+* **"Sợ bị gắn cờ oan":** Các chủ cửa hàng lo lắng hệ thống quét tự động của Grab có thể khóa nhầm quán khi lượng khách ủng hộ thực tế tăng đột biến (ví dụ: quán bỗng dưng viral).
 
-Gom theo **workflow/pain**, không gom theo tên feature.
+---
 
-Ví dụ cụm tốt:
+## 2. Insight Khách Hàng (User Insight)
+> 💡 **Core Insight:**
+> Người dùng ứng dụng giao đồ ăn không chỉ đơn thuần cần nhìn vào điểm số sao trung bình của một quán. Thứ họ thực sự cần là **sự minh bạch** và **căn cứ xác thực** để hỗ trợ ra quyết định. Nhiều bằng chứng thực tế cho thấy hệ thống đánh giá bằng sao hiện tại đang bị thao túng dễ dàng bởi các kỹ thuật seeding tinh vi, làm đổ vỡ nghiêm trọng niềm tin vào nền tảng.
 
-- "Không biết chọn chuyên khoa"
-- "Không hiểu vì sao bị tính phí"
-- "Muốn sửa output nhưng không có chỗ sửa"
-- "Bot trả lời tự tin nhưng không dẫn nguồn"
+---
 
-## 2. Viết insight
+## 3. Cơ Hội Sản Phẩm (Product Opportunity)
+* **Giải pháp đột phá:** Dùng AI để **Augment (Tăng cường)** khả năng đọc hiểu và phân tích tính xác thực của review, giúp user chủ động né tránh các "bẫy" seeding.
+* **Kiểm soát rủi ro:** Giảm thiểu tối đa tỷ lệ gắn cờ sai (*False Positive*) bằng cách **chỉ hiển thị điểm số xác suất nghi vấn và trích dẫn lý do khách quan**, thay vì để hệ thống tự ý ẩn review của quán mà không có sự đồng ý của con người.
 
-Form:
+---
 
-```text
-User [segment] không chỉ cần [surface need].
-Họ thật ra cần [deeper need],
-vì [evidence pattern].
-```
+## 4. Xác Định Phân Đoạn Xây Dựng (Build Slice Validation)
+*Kiểm tra tính khả thi của phân đoạn qua bộ 5 câu hỏi cốt lõi để chốt phạm vi:*
 
-Ví dụ:
+* [x] **User cụ thể chưa?** Đạt — Người dùng Grab Food đang trực tiếp xem review quán ăn.
+* [x] **Task đủ hẹp chưa?** Đạt — Chỉ tập trung phân tích sự trùng lặp ngữ nghĩa và gắn cờ nghi vấn cho review.
+* [x] **AI decision rõ chưa?** Đạt — AI chịu trách nhiệm tính toán và hiển thị "Chỉ số nghi vấn Seeding" (*Seeding Probability Score*).
+* [x] **Failure path rõ chưa?** Đạt — Xử lý trường hợp quán ăn uy tín bị viral thật sự nhưng AI nhầm tưởng là hoạt động seeding.
+* [x] **Có evidence không?** Đạt — Dựa trên đánh giá thực tế từ App Store và phản hồi trực tiếp từ các chủ quán.
 
-```text
-Người lần đầu đi khám không chỉ cần danh sách chuyên khoa.
-Họ cần hỗ trợ ra quyết định an toàn,
-vì nhiều review/observation cho thấy họ không biết triệu chứng của mình nên đi khoa nào.
-```
+---
 
-## 3. Viết opportunity
+## 5. Quyết Định Phạm Vi (Scope Decision)
+* **Tình huống rủi ro:** Nguy cơ gắn cờ sai gây thiệt hại trực tiếp đến uy tín và doanh thu của các quán ăn chân chính là rất cao.
+* **Quyết định:** Lựa chọn mô hình **Augmentation** *(AI gợi ý/phân loại, user quyết định cuối)*. 
+* **Hành động cụ thể:** Chủ động **giảm scope** xuống, chỉ tập trung vào việc phát hiện seeding dạng nội dung lặp lại (*semantic similarity*) vì đây là bằng chứng trực quan, dễ thấy và khả thi nhất để hoàn thiện demo trong vòng 1 ngày.
 
-Form:
+---
 
-```text
-Cơ hội là dùng AI để [augment/automate hành động hẹp],
-giúp user [kết quả],
-trong khi vẫn kiểm soát [failure/risk].
-```
+## 6. Tuyên Bố Định Hướng Cốt Lõi (Core Mission Statement)
+> 🎯 **Câu chốt dự án:**
+> Dựa trên bằng chứng về việc review giả mạo gây mất tiền và niềm tin của người dùng, nhóm sẽ xây dựng nguyên mẫu hệ thống gắn cờ nghi vấn seeding kèm điểm xác suất cho người dùng Grab Food để giải quyết sự thao túng hệ thống đánh giá, bằng cách ứng dụng AI **Augment** việc phân tích ngữ nghĩa các cụm review, đồng thời tập trung kiểm thử kỹ lưỡng *failure path* khi một quán ăn uy tín bị gắn cờ nhầm do có lượng khách ủng hộ đột biến.
 
-## 4. Chọn build slice
+---
 
-Build slice tốt phải qua 5 câu hỏi:
+## 7. Danh Sách Tạm Hoãn (Backlog - Out of Scope cho Day 06)
+*Các tính năng và luồng xử lý dữ liệu phức tạp sẽ không được xây dựng trong giai đoạn này:*
 
-| Câu hỏi | Đạt khi |
-|---|---|
-| User cụ thể chưa? | Nói được ai dùng, trong bối cảnh nào. |
-| Task đủ hẹp chưa? | Demo được trong 3-5 phút. |
-| AI decision rõ chưa? | AI gợi ý/tự làm một việc cụ thể. |
-| Failure path rõ chưa? | Có một case AI không chắc hoặc sai để test. |
-| Có evidence không? | Có bằng chứng từ self-use/review/user/competitor. |
-
-## 5. Quyết định: giữ, giảm scope, hay đổi hướng?
-
-| Tình huống | Quyết định |
-|---|---|
-| Evidence yếu, user mơ hồ | Dừng build sâu; quay lại research 20 phút. |
-| Ý tưởng quá rộng | Giữ domain, cắt xuống một flow. |
-| AI không cần thiết | Dùng rule/manual prototype; ghi rõ vì sao không dùng AI sâu. |
-| Rủi ro cao | Chọn augmentation hoặc conditional automation. |
-| Không demo được trong 1 ngày | Đưa phần lớn vào backlog, giữ một path nhỏ. |
-
-## 6. Câu chốt cuối
-
-Điền câu này trước khi rời lớp:
-
-```text
-Dựa trên [evidence],
-nhóm sẽ build [prototype slice],
-cho [user],
-để giải quyết [pain],
-bằng cách AI [augment/automate task],
-và sẽ test failure path [failure mode].
-```
-
-## 7. Backlog
-
-Những thứ **không build trong Day 06**:
-
-- 
-- 
-- 
+* [ ] Hệ thống xác thực review dựa trên đối chiếu hóa đơn thực tế và định vị GPS (Dữ liệu thực).
+* [ ] Giao diện quản trị dành riêng cho chủ quán để đối chất, gửi bằng chứng minh oan (*Trust Recovery*).
+* [ ] Cơ chế tự động khóa/chặn tài khoản của các "seeders" chuyên nghiệp hoặc tài khoản ảo.
+* [ ] Thuật toán phân tích lịch sử đánh giá xuyên suốt nhiều quán để truy quét mạng lưới seeding quy mô lớn.
