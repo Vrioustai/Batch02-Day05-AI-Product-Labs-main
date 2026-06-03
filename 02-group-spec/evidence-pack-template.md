@@ -1,72 +1,62 @@
-# Template — Evidence Pack
-
-Nộp kèm thin SPEC cuối Day 05.
-
 ## 1. Nhóm và track
+* **Tên nhóm:** Tài, Thảo, Đức, Huy
+* **Track:** C . Food & Local Delivery
+* **Product/app đã chọn:** Grab Food (Tính năng tích hợp gắn cờ đánh giá giả mạo)
+* **Build slice đang nghĩ:** Hệ thống hiển thị "Chỉ số nghi vấn Seeding" (*Seeding Probability Score*) thời gian thực trên giao diện review của quán ăn.
 
-**Tên nhóm:**  
-**Track:**  
-**Product/app đã chọn:**  
-**Build slice đang nghĩ:**  
+---
 
 ## 2. Self-use evidence
-
-Nhóm tự dùng app/workflow và ghi lại điểm gãy.
+*Nhóm tự dùng app GrabFood và ghi lại điểm gãy trong hệ thống tin cậy hiện tại.*
 
 | Observation | Screenshot/link | Path liên quan | Điều học được |
-|---|---|---|---|
-|  |  | Happy / Low-confidence / Failure / Correction |  |
-|  |  | Happy / Low-confidence / Failure / Correction |  |
+| :--- | :--- | :--- | :--- |
+| Nhiều đánh giá 5 sao cho một quán mới mở có nội dung giống hệt nhau ("Món ăn ngon, sẽ quay lại"). | [Link ảnh 1] | Failure | Hệ thống hiện tại không lọc được seeding theo cụm ngữ nghĩa giống nhau. |
+| Một quán bị phốt trên mạng đột ngột có hàng trăm review 5 sao trong 30 phút để "đẩy sao". | [Link ảnh 2] | Low-confidence | Thời điểm (timestamp) là tín hiệu cực kỳ quan trọng để phát hiện bất thường. |
+
+---
 
 ## 3. User / review / social evidence
+*Nguồn: Review trên App Store và các group cộng đồng người dùng Grab.*
 
-Nguồn có thể là review App Store/Play, group, comment, phỏng vấn nhanh, hoặc nguồn public khác.
+* **Quote / review / observation 1:** "Đặt quán 4.9 sao mà đồ ăn giao tới như đồ ôi thiu, đọc kỹ lại mới thấy review toàn nick ảo khen lấy lệ."
+  * **Nguồn:** App Store Review
+  * **User là ai?:** Người dùng bận rộn
+  * **Pain/failure mode:** Mất niềm tin (*Trust breakdown*) do star system bị thao túng.
+* **Quote / review / observation 2:** "Nhiều quán làm ăn chân chính bị đối thủ seeding 1 sao hàng loạt mà không có cách nào minh oan với Grab."
+  * **Nguồn:** Group Tài xế & Chủ quán
+  * **User là ai?:** Chủ cửa hàng
+  * **Pain/failure mode:** *False Positive* của hệ thống hiện tại gây thiệt hại kinh doanh.
 
-| Quote / review / observation | Nguồn | User là ai? | Pain/failure mode |
-|---|---|---|---|
-|  |  |  |  |
-|  |  |  |  |
-|  |  |  |  |
+> 📝 **Lưu ý:** Đây là giả định dựa trên 10 review tiêu cực về độ tin cậy trên App Store. Nhóm sẽ phỏng vấn nhanh 5 người dùng thường xuyên trước checkpoint M1 Day 06.
 
-Nếu chưa có nguồn ngoài nhóm, ghi rõ:
-
-```text
-Đây là giả định. Nhóm sẽ kiểm bằng [cách] trước checkpoint M1 Day 06.
-```
+---
 
 ## 4. Competitor / analog evidence
-
 | App / mô hình tham khảo | Họ xử lý task này thế nào? | Pattern học được | Có áp dụng trong 1 ngày không? |
-|---|---|---|---|
-|  |  |  |  |
+| :--- | :--- | :--- | :--- |
+| **Yelp** | Hiển thị "Consumer Alert" khi phát hiện hoạt động đánh giá bất thường. | Warning path: Cảnh báo thay vì chặn hoàn toàn. | Có, thiết kế tag cảnh báo trên UI. |
+| **Fakespot (Amazon)** | Phân tích review và chấm điểm tin cậy từ A đến F. | Scoring: Chuyển từ nhãn Đúng/Sai sang thang điểm xác suất. | Có, dùng LLM để tính Probability Score. |
+
+---
 
 ## 5. Evidence -> Insight
+* **Evidence nổi bật nhất:** Người dùng cảm thấy bị lừa bởi "vỏ bọc" 5 sao nhưng không muốn hệ thống tự ý ẩn quán vì họ muốn tự kiểm chứng.
+* **Insight:** User không chỉ gặp vấn đề về quán ăn tệ (*surface problem*). Thật ra họ cần minh bạch hóa thông tin (*transparency*) và sự hỗ trợ ra quyết định (*decision support*) để cảm thấy mình vẫn nắm quyền kiểm soát.
+* **Opportunity:** AI có thể giúp bằng cách **Augment (Tăng cường)** khả năng đọc hiểu review, đưa ra chỉ số nghi vấn và trích dẫn lý do tại sao review đó bị coi là giả mạo.
 
-```text
-Evidence nổi bật nhất:
-
-Insight:
-User không chỉ gặp [surface problem].
-Thật ra họ cần [deeper need / decision support / trust / recovery].
-
-Opportunity:
-AI có thể giúp bằng cách [augment/automate hành động hẹp].
-```
+---
 
 ## 6. Evidence đổi SPEC như thế nào?
+* [ ] Đổi user chính.
+* [ ] Đổi pain statement.
+* [ ] Đổi build slice.
+* [x] Đổi Auto/Aug decision.
+* [x] Đổi 4 paths.
+* [x] Đổi failure mode.
+* [ ] Đổi owner/test plan.
 
-- [ ] Đổi user chính.
-- [ ] Đổi pain statement.
-- [ ] Đổi build slice.
-- [ ] Đổi Auto/Aug decision.
-- [ ] Đổi 4 paths.
-- [ ] Đổi failure mode.
-- [ ] Đổi owner/test plan.
-
-Ghi rõ 1-2 thay đổi quan trọng:
-
-```text
-Trước evidence, nhóm định...
-Sau evidence, nhóm đổi thành...
-Lý do:
-```
+### Ghi rõ 1-2 thay đổi quan trọng:
+* **Trước evidence, nhóm định:** Tự động ẩn các review nghi ngờ seeding (*Automation*).
+* **Sau evidence, nhóm đổi thành:** Gắn cờ và hiển thị điểm xác suất (*Augmentation*).
+* **Lý do:** Do AI mang tính xác suất và rủi ro gắn cờ sai (*False Positive*) cho các quán uy tín là rất cao. Việc chọn Augmentation giúp giảm ma sát khi AI sai và duy trì niềm tin của cả người dùng lẫn chủ quán.
